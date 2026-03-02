@@ -4,8 +4,8 @@
 The package includes necessary packages for the UR10e, Gripper Robotiq 2F-85 (CAD Meshes included) and package Serial for the gripper
 
 ## Result
-![](https://github.com/trungtran22/dual_ur10e/pic/dual_ur10e.png)
-![](https://github.com/trungtran22/dual_ur10e/pic/dual_arm.gif)
+![](https://github.com/trungtran22/dual_ur10e/blob/main/pic/dual_ur10e.png)
+![](https://github.com/trungtran22/dual_ur10e/blob/main/pic/dual_arm.gif)
 
 ## Methodology
 Due to hardware constraint (unable to initiate Moveit_setup_assistant), MoveIt SRDF and Collision Matrix were manually written and generated.
@@ -41,8 +41,8 @@ sudo apt install ros-humble-moveit ros-humble-ur ros-humble-ros2-control ros-hum
 ### 2. Workspace Setup & Cloning
 Create a new ROS 2 workspace and clone:
 ```
-mkdir -p ~/sereact_ws
-cd ~/sereact_ws
+mkdir -p ~/sereact_ws/src
+cd ~/sereact_ws/src
 git clone https://github.com/trungtran22/dual_ur10e.git .
 ```
 

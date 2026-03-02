@@ -1,0 +1,35 @@
+###############################################
+# Modify all parameters related to servoing here
+###############################################
+use_gazebo: false
+command_in_type: "speed_units"
+scale:
+  linear: 1.5
+  rotational: 0.5
+
+# Properties of incoming commands
+command_timeout: 0.5
+servo_node_period: 0.02
+publish_period: 0.02
+
+# MoveIt properties
+move_group_name: left_arm
+planning_frame: base_table
+ee_frame_name: left_tool0
+robot_link_command_frame: left_base_link
+
+# Collision
+check_collisions: true
+collision_check_rate: 10.0
+self_collision_proximity_threshold: 0.01
+
+# Topic from Leap Motion
+twist_command_topic: /left_arm/servo_node/delta_twist_cmds
+joint_command_topic: /left_arm/servo_node/delta_joint_cmds
+
+command_out_type: "trajectory_msgs/JointTrajectory"
+command_out_topic: "/left_arm/command"
+
+publish_joint_positions: true
+publish_joint_velocities: false
+publish_joint_accelerations: false

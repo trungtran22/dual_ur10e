@@ -5,13 +5,13 @@ import os
 
 def generate_acm(urdf_file):
     if not os.path.exists(urdf_file):
-        print(f"Không tìm thấy file: {urdf_file}")
+        print(f"Can't locate file: {urdf_file}")
         return
 
     tree = ET.parse(urdf_file)
     root = tree.getroot()
 
-    # 1. Tìm tất cả các khớp liền kề nhau (Adjacent)
+    # 1. Find adjecent joints
     adjacent_pairs = set()
     for joint in root.findall('joint'):
         parent = joint.find('parent')
@@ -22,7 +22,7 @@ def generate_acm(urdf_file):
             if p and c:
                 adjacent_pairs.add(tuple(sorted([p, c])))
 
-    # 2. Gom nhóm các link của cổ tay và bộ kẹp (Gripper) để tắt va chạm nội bộ
+    # 2. Grouping Wrist and Gripper links to turn off local collision
     links = [link.get('name') for link in root.findall('link') if link.get('name')]
     
     left_wrist_gripper = [l for l in links if 'left' in l and ('wrist' in l or 'gripper' in l or 'robotiq' in l or 'flange' in l or 'tool' in l)]
@@ -35,7 +35,7 @@ def generate_acm(urdf_file):
             if pair not in adjacent_pairs:
                 never_pairs.add(pair)
 
-    # 3. In ra màn hình cấu trúc XML chuẩn của MoveIt
+    # 3. Print MoveIt standard XML structure
     print("\n\n")
     for p1, p2 in sorted(adjacent_pairs):
         print(f'    <disable_collisions link1="{p1}" link2="{p2}" reason="Adjacent"/>')
@@ -44,6 +44,6 @@ def generate_acm(urdf_file):
     print("\n\n")
 
 if __name__ == "__main__":
-    # Đảm bảo đường dẫn này trỏ đúng tới file .urdf tĩnh mà bạn đã gen ra lúc trước
+    # Make sure that it's the correct path to your URDF folder
     urdf_path = "src/dual_arm_description/urdf/dual_ur10e_robotiq.urdf" 
     generate_acm(urdf_path)

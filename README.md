@@ -73,7 +73,7 @@ The system has been optimized into a single bringup launch file for the robot in
 **Terminal 1: Launch Robot Infrastructure (RViz, MoveIt Servo, Robot Control & Triggers)**
 ```
 source ~/sereact_ws/install/setup.bash
-ros2 launch dual_arm_description teleop_bringup.launch.py
+ros2 launch dual_arm_description dual_system_bringup.launch.py
 ```
 *Wait approximately 5 seconds for MoveIt Servo to fully load the SRDF/ACM and start receiving commands.*
 

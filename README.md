@@ -75,7 +75,7 @@ The system has been optimized into a single bringup launch file for the robot in
 source ~/sereact_ws/install/setup.bash
 ros2 launch dual_arm_description dual_system_bringup.launch.py
 ```
-*Wait approximately 5 seconds for MoveIt Servo to fully load the SRDF/ACM and start receiving commands.*
+*Wait approximately 10 seconds for MoveIt Servo to fully load the SRDF/ACM and start receiving commands.*
 
 **Terminal 2: Launch Leap Motion Teleoperation Node**
 ```

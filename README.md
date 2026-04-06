@@ -1,4 +1,4 @@
-# Dual UR10e System for Teleoperation tasks with Leap Motion
+# Dual UR10e System for Teleoperation tasks 
 ## ROS Humble - UR10e - Robotiq 2f-85
 ## The system features Custom Collision Matrices (ACM) for self-collision avoidance
 The package includes necessary packages for the UR10e, Gripper Robotiq 2F-85 (CAD Meshes included) and package Serial for the gripper

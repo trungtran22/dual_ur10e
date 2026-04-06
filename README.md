@@ -41,15 +41,15 @@ sudo apt install ros-humble-moveit ros-humble-ur ros-humble-ros2-control ros-hum
 ### 2. Workspace Setup & Cloning
 Create a new ROS 2 workspace and clone:
 ```
-mkdir -p ~/sereact_ws/src
-cd ~/sereact_ws/src
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
 git clone https://github.com/trungtran22/dual_ur10e.git .
 ```
 
 ### 3. Install ROS Dependencies via rosdep
 Install any remaining dependencies declared in the `package.xml` files:
 ```
-cd ~/sereact_ws
+cd ~/ros2_ws
 sudo rosdep init
 rosdep update
 rosdep install --from-paths src --ignore-src -r -y
@@ -58,7 +58,7 @@ rosdep install --from-paths src --ignore-src -r -y
 ### 4. Build the Workspace
 Build the packages using `colcon`:
 ```
-cd ~/sereact_ws
+cd ~/ros2_ws
 colcon build --symlink-install
 ```
 Source the workspace:
@@ -66,13 +66,13 @@ Source the workspace:
 source install/setup.bash
 ```
 
-## How to Run the System
+## How to Run the System (along with other Teleoperation system)
 
 The system has been optimized into a single bringup launch file for the robot infrastructure, and a separate node for the Leap Motion hardware logic.
 
 **Terminal 1: Launch Robot Infrastructure (RViz, MoveIt Servo, Robot Control & Triggers)**
 ```
-source ~/sereact_ws/install/setup.bash
+source ~/ros2_ws/install/setup.bash
 ros2 launch dual_arm_description dual_system_bringup.launch.py
 ```
 *Wait approximately 10 seconds for MoveIt Servo to fully load the SRDF/ACM and start receiving commands.*

@@ -26,7 +26,7 @@ def generate_launch_description():
 
     # 2. Execute Robot_control file
     robot_node = ExecuteProcess(
-        cmd=['python3', '/home/trungtran/sereact_ws/src/dual_arm_moveit_config/src/robot_control.py'],
+        cmd=['python3', '/home/trungtran/ros2_ws/src/dual_arm_moveit_config/src/robot_control.py'],
         output='screen'
     )
 
